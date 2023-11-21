@@ -12,7 +12,11 @@
             crossorigin="anonymous"
         />
 
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='layout.css') }}"
+        />
 
         {% if title %}
         <title>{{ title }}</title>
@@ -22,7 +26,6 @@
     </head>
 
     <body>
-        
         <!-- Navbar -->
         <header class="site-header">
             <nav class="navbar navbar-expand-lg fixed-top">
@@ -37,7 +40,10 @@
                         aria-labelledby="offcanvasNavbarLabel"
                     >
                         <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            <h5
+                                class="offcanvas-title"
+                                id="offcanvasNavbarLabel"
+                            >
                                 Logo
                             </h5>
                             <button
@@ -65,13 +71,19 @@
                                     >
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mx-lg-2" href="#">Offers</a>
+                                    <a class="nav-link mx-lg-2" href="#"
+                                        >Offers</a
+                                    >
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mx-lg-2" href="#">Contact</a>
+                                    <a class="nav-link mx-lg-2" href="#"
+                                        >Contact</a
+                                    >
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mx-lg-2" href="#">About</a>
+                                    <a class="nav-link mx-lg-2" href="#"
+                                        >About</a
+                                    >
                                 </li>
                             </ul>
                         </div>
@@ -112,15 +124,33 @@
         <!-- Hero section -->
         <section class="hero-section">
             <div
-            class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column"
-            {% block content %}{% endblock %}
+                class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column"
+                {%
+                block
+                content
+                %}
+                {%
+                endblock
+                %}
             ></div>
         </section>
         <!-- End Hero Section -->
 
         <!-- Boostrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
     </body>
 </html>

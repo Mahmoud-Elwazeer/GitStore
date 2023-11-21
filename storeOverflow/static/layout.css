@@ -68,10 +68,9 @@
 }
 
 .hero-section {
-    background: url(hero-bg.jpg) no-repeat center;
-    background-size: cover;
-    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
 }
+
 
 .hero-section::before {
     background-color: rgba(0, 0, 0, 0.6);

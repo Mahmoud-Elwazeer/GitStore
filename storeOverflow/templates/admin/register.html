@@ -1,17 +1,29 @@
-{% extends "layout.html" %}
-{% block content %}
-    <div class="container">
-        {% from "_formhelpers.html" import render_field %}
-<form method="post">
-  <dl>
-    {{ render_field(form.username, class="form-control") }}
-    {{ render_field(form.email, class="form-control") }}
-    {{ render_field(form.password, class="form-control") }}
+<style>
+    .reg {
+        font-size: 15px;
+        margin-top: 80%;
+        width: 400px;
+        height: 700px;
+        
+    }
+</style>
+{% extends "layout.html" %} {% block content %}
 
-    {{ render_field(form.confirm, class="form-control") }}
-  </dl>
-  <p><input type="submit" value="Register" class="btn btn-info mt-2">
-</form>
-    </div>
-  <!-- Section: Design Block -->
+
+<div class="container white z-depth-2">
+    <form action="" method="POST">
+        <section class="reg">
+            {% from "_formhelpers.html" import render_field %} 
+            {{ form.csrf_token }}
+        {{ render_field(form.username, class="form-control",placeholder="Username") }} 
+        {{ render_field(form.firstname, class="form-control", placeholder="First Name") }} 
+        {{ render_field(form.lastname, class="form-control", placeholder="LastName") }}
+        {{ render_field(form.email, class="form-control", placeholder="Email") }} 
+        {{ render_field(form.password, class="form-control", placeholder="Password") }}
+        {{ render_field(form.confirm_password, class="form-control", placeholder="Confirm Password") }}
+        <button type="submit" value="Register"class="btn btn-info mt-2 waves-effect waves-light teal"        
+        >Register</button>
+        </section>
+    </form>
+</div>
 {% endblock content %}
