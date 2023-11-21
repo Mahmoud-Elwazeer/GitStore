@@ -1,19 +1,16 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="text-center h1 text-danger">Register</div>
+<div class="text-center h1 text-danger">Login</div>
 <div class="container">
     {% from "_formhelpers.html" import render_field %}
     <form method="POST" action=""  enctype="multipart/form-data">
         <div>
             {{ form.csrf_token }}
-            {{ render_field(form.name) }}
-            {{ render_field(form.username) }}
             {{ render_field(form.email) }}
             {{ render_field(form.password) }}
-            {{ render_field(form.confirm_password) }}
-            <!-- <input type="file", name="photo"> -->
+            {{ render_field(form.remember) }}
         </div>
-        <p><input type=submit value="Register" class="btn btn-info">
+        <p><input type=submit value="Login" class="btn btn-info">
     </form>
 </div>
 {% endblock %}
