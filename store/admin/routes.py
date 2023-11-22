@@ -22,8 +22,8 @@ def register():
                     password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        # flash('Thanks for registering')
-        return redirect(url_for('home'))
+        flash(f'welcome {form.name.data} Thanks for registering','success')
+        return redirect(url_for('login'))
     return render_template('admin/register.html', form=form, title="Registeration Page")
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -32,5 +32,8 @@ def login():
     if request.method == 'POST' and form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            return redirect(url_for('home'))
+            flash(f'welcome {form.email.data} you are logedin now','success')
+            return redirect(url_for('login'))
+        else:
+            flash("wrong password try again")
     return render_template("admin/login.html",form=form,  title="Login" )
