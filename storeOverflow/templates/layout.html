@@ -61,7 +61,7 @@
                                     <a
                                         class="nav-link mx-lg-2 active"
                                         aria-current="page"
-                                        href="#"
+                                        href="{{ url_for('home') }}"
                                         >Home</a
                                     >
                                 </li>
@@ -88,7 +88,10 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="#" class="login-button">Login/register</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-light me-1" >register</a>
+                    
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-primary">Login</a>
+
                     <button
                         class="navbar-toggler pe-0"
                         type="button"
@@ -99,6 +102,7 @@
                     >
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="d-flex" style="height: 30px; margin-left: 10px">
                         <div class="vr"></div>
                     </div>
