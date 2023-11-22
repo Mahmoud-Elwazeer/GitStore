@@ -14,12 +14,9 @@ def home():
 
 
 @app.route('/register', methods=['GET', 'POST'])
-@app.route('/signin', methods=['GET', 'POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm(request.form)
-    print(form.validate())
-    print(form.errors)
-
     if request.method == 'POST' and form.validate():
         hashed_pwd = bcrypt.generate_password_hash(form.password.data)
         user = User(username=form.username.data,
@@ -35,7 +32,7 @@ def register():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signin', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
     print(form.data)
