@@ -14,6 +14,7 @@ class RegistrationForm(Form):
                             validators.EqualTo('confirm_password', message='Passwords must match'
                             )])
     confirm_password = PasswordField('Confirm Password')
+    submit = SubmitField('Register')
 
     def validate_username(self, field):
         if User.query.filter_by(username=field.data).first():
@@ -30,4 +31,4 @@ class LoginForm(Form):
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     # remember = BooleanField('Remember Me')
-    # submit = SubmitField('Login')
+    submit = SubmitField('Login')
