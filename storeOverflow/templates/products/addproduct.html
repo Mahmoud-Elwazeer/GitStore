@@ -6,8 +6,26 @@
             {% from "_formhelpers.html" import render_field %}
             <form action="" method="POST">
                 <div>
-                    <!-- {{ form.csrf_token }} -->
+                    {{ form.csrf_token }}
                     {{ render_field(form.name, class="form-control")}}
+                    {{ render_field(form.color, class="form-control")}}
+                    {{ render_field(form.size, class="form-control")}}
+                    {{ render_field(form.price, class="form-control")}}
+
+                    <label for="category">Select a Category</label>
+                    <select name="category" id="category"  class="form-control" required>
+                        {% for category in categories %}
+                        <option value="category.id">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+
+                    {{ render_field(form.stock, class="form-control")}}
+                    {{ render_field(form.discount, class="form-control")}}
+                    {{ render_field(form.decription, class="form-control")}}
+
+                    <div class="col-md-4">{{ render_field(form.image_1) }}</div>
+                    <div class="col-md-4">{{ render_field(form.image_2) }}</div>
+                    <div class="col-md-4">{{ render_field(form.image_3) }}</div>
                 </div>
             </form>
         </div>

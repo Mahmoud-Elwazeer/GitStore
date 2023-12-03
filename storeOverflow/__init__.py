@@ -1,6 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+import os
+
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 
@@ -12,8 +17,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://moharm:pass15420@localhost/gits
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://moharm:root@15420@localhost/gitstore_db'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(basedir, 'static/images')
+
+
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
+patch_request_class(app)
+
 
 from storeOverflow.admin import routes
 from storeOverflow.products import routes

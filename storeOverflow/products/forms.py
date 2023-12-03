@@ -1,10 +1,10 @@
-from wtforms import Form, BooleanField, StringField, PasswordField, IntegerField
-from wtfform import TextAreaField, validators, SubmitField, FloatField
+from wtforms import Form, StringField, IntegerField
+from wtforms import TextAreaField, FloatField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 
-class Products(Form):
+class ProductForm(Form):
     name = StringField('Name', validators=[DataRequired()])
     color = StringField('Colros', validators=[DataRequired()])
     size = StringField('Size', validators=[DataRequired()])
