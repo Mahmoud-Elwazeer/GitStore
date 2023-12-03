@@ -1,6 +1,6 @@
-from storeOverflow import db, app, photos
-from .modules import AddCategory, AddProduct
 from flask import render_template, url_for, request, flash, redirect
+from storeOverflow import app, db, photos
+from .modules import AddCategory, AddProduct
 from .forms import ProductForm
 import secrets
 
@@ -32,15 +32,18 @@ def addproduct():
         stock = form.stock.data
         discount = form.discount.data
         decription = form.decription.data
-        image_1 = photos.save(request.files.get('image_1'), name=secrets.token_hex(10) + ".")
-        image_2 = photos.save(request.files.get('image_2'), name=secrets.token_hex(10) + ".")
-        image_3 = photos.save(request.files.get('image_3'), name=secrets.token_hex(10) + ".")
+        image_1 = photos.save(request.files.get(
+            'image_1'), name=secrets.token_hex(10) + ".")
+        image_2 = photos.save(request.files.get(
+            'image_2'), name=secrets.token_hex(10) + ".")
+        image_3 = photos.save(request.files.get(
+            'image_3'), name=secrets.token_hex(10) + ".")
 
         addproduct = AddProduct(name=name, color=color, size=size, price=price,
-                    category=get_category, stock=stock, discount=discount,
-                    decription=decription, image_1=image_1, image_2=image_2, image_3=image_3)
+                                category=get_category, stock=stock, discount=discount,
+                                decription=decription, image_1=image_1, image_2=image_2, image_3=image_3)
         db.session.add(addproduct)
         db.session.commit()
         return redirect(url_for('addproduct'))
 
-    return render_template('products/addproduct.html')
+    return render_template('products/addproduct.html', form=form, categories=categories)

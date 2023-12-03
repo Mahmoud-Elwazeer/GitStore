@@ -20,13 +20,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(basedir, 'static/images')
 
 
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)
 
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 from storeOverflow.admin import routes
 from storeOverflow.products import routes

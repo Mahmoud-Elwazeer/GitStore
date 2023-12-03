@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="contain">
-        <div class="row">
+        <div class="row" style="height: 100px; margin-top: -400px; font-size:small;">
             {% from "_formhelpers.html" import render_field %}
             <form action="" method="POST">
                 <div>
@@ -15,7 +15,7 @@
                     <label for="category">Select a Category</label>
                     <select name="category" id="category"  class="form-control" required>
                         {% for category in categories %}
-                        <option value="category.id">{{category.name}}</option>
+                            <option value="{{ category.id }}">{{ category.name }}</option>
                         {% endfor %}
                     </select>
 
@@ -26,6 +26,8 @@
                     <div class="col-md-4">{{ render_field(form.image_1) }}</div>
                     <div class="col-md-4">{{ render_field(form.image_2) }}</div>
                     <div class="col-md-4">{{ render_field(form.image_3) }}</div>
+
+                    <p><input type="submit" value="Add Product" class="btn btn-info"></p>
                 </div>
             </form>
         </div>
