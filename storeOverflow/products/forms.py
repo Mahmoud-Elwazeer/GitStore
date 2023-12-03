@@ -16,5 +16,5 @@ class ProductForm(Form):
         ['jpg', 'png', 'gif', 'jpeg'])])
     image_2 = FileField('Image 2', validators=[FileRequired(), FileAllowed(
         ['jpg', 'png', 'gif', 'jpeg'])])
-    image_3 = FileField('Image 3', validators=[FileAllowed(
+    image_3 = FileField('Image 3', validators=[FileRequired(), FileAllowed(
         ['jpg', 'png', 'gif', 'jpeg'])])
