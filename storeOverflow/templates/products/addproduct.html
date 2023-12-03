@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="contain">
+        <div class="row">
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST">
+                <div>
+                    <!-- {{ form.csrf_token }} -->
+                    {{ render_field(form.name, class="form-control")}}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
