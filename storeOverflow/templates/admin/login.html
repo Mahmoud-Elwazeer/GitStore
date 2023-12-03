@@ -7,25 +7,25 @@
         font-family: Arial, sans-serif;
     }
 
-    .reg {
+    .login-form {
         font-size: 15px;
         width: 400px;
         padding: 20px;
-        background-color: rgb(255 255 255 / 0.3);
-        backdrop-filter: blur(10px);
-
+        background-color: rgba(255, 255, 255, 0.3); /* Use rgba for transparency */
         border-radius: 10px;
         backdrop-filter: blur(8px); /* Apply blur effect to the background */
     }
 </style>
 
-{% extends "layout.html" %} 
+{% extends "layout.html" %}
+
+
 {% block content %}
 <div class="login-container">
     {% from "_formhelpers.html" import render_field %}
     {% include 'messages.html' %}
     <form action="" method="POST">
-        <section class="reg">
+        <section class="login-form">
             <div>
                 {{ form.csrf_token }}
                 {{ render_field(form.email, class="form-control", placeholder="Email") }} 
