@@ -21,8 +21,9 @@ def addcat():
 def addproduct():
     form = ProductForm(request.form)
     categories = AddCategory.query.all()
-    if request.method == 'POST':
-        print("I am In")
+    if request.method == 'POST' and 'image_1' in request.files and\
+        'image_2' in request.files and 'image_3' in request.files:
+        # print("I am In")
         name = form.name.data
         color = form.color.data
         size = form.size.data
@@ -39,7 +40,6 @@ def addproduct():
             'image_2'), name=secrets.token_hex(10) + ".")
         image_3 = photos.save(request.files.get(
             'image_3'), name=secrets.token_hex(10) + ".")
-
         addproduct = AddProduct(name=name, color=color, size=size, price=price,
                                 category=AddCategory(name=get_category), stock=stock, discount=discount,
                                 description=decription, image_1=image_1, image_2=image_2, image_3=image_3)
