@@ -16,3 +16,4 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
 from storeOverflow.admin import routes
+from storeOverflow.products import routes
