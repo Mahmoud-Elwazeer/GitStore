@@ -19,15 +19,16 @@ def addcat():
 
 @app.route('/addproduct', methods=['GET', 'POST'])
 def addproduct():
-    form = ProductForm()
+    form = ProductForm(request.form)
     categories = AddCategory.query.all()
-    if request.form == 'POST':
+    if request.method == 'POST':
+        print("I am In")
         name = form.name.data
         color = form.color.data
         size = form.size.data
         price = form.price.data
 
-        get_category = request.form.get('categories')
+        get_category = request.form.get('category')
 
         stock = form.stock.data
         discount = form.discount.data
@@ -40,8 +41,8 @@ def addproduct():
             'image_3'), name=secrets.token_hex(10) + ".")
 
         addproduct = AddProduct(name=name, color=color, size=size, price=price,
-                                category=get_category, stock=stock, discount=discount,
-                                decription=decription, image_1=image_1, image_2=image_2, image_3=image_3)
+                                category=AddCategory(name=get_category), stock=stock, discount=discount,
+                                description=decription, image_1=image_1, image_2=image_2, image_3=image_3)
         db.session.add(addproduct)
         db.session.commit()
         return redirect(url_for('addproduct'))

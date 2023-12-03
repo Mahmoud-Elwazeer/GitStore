@@ -4,7 +4,7 @@
     <div class="contain">
         <div class="row" style="height: 100px; margin-top: -400px; font-size:small;">
             {% from "_formhelpers.html" import render_field %}
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div>
                     {{ form.csrf_token }}
                     {{ render_field(form.name, class="form-control")}}
