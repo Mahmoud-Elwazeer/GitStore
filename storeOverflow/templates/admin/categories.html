@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<!-- Nav Bar -->
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
@@ -27,10 +28,29 @@
       </nav>
 </div>
 
-<div class="container white z-depth-2">
-    <div class=" row text-center col-md-8 mx-20">
-        This admin page
-    </div>
-</div>
+<!-- End Nav -->
 
-{% endblock content %}
+<div class="container">
+    {% include 'messages.html' %}
+    <table class="table tbale-sm">
+        <thead>
+            <th>Sr</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        {% for category in categories %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ category.name }}</td>
+            <td> <a href="{{url_for('updatecat', id=category.id)}}" class="btn btn-sm btn-info">Edit</a></td>
+            <!-- <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{category.id}}">
+              Delete
+            </button></td> -->
+            <td>Delete</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}
