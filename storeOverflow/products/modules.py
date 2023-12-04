@@ -1,20 +1,20 @@
 from storeOverflow import app, db
 
 
-class AddCategory(db.Model):
+class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False, unique=True)
 
 
-class AddProduct(db.Model):
+class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     color = db.Column(db.String(20), nullable=False)
     size = db.Column(db.String(30), nullable=False)
     price = db.Column(db.Numeric(10, 2), nullable=False)
 
-    category_id = db.Column(db.Integer, db.ForeignKey('add_category.id'), nullable=False)
-    category = db.relationship('AddCategory', backref=db.backref('categories', lazy=True))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
+    category = db.relationship('Category', backref=db.backref('categories', lazy=True))
 
     stock = db.Column(db.Integer, nullable=False)
     discount = db.Column(db.Integer, nullable=False, default=0)

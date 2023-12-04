@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, flash, redirect
 from storeOverflow import app, db, photos
-from .modules import AddCategory, AddProduct
+from .modules import Category, Product
 from .forms import ProductForm
 import secrets
 
@@ -9,7 +9,7 @@ import secrets
 def addcat():
     if request.method == "POST":
         getcat = request.form.get('category')
-        category = AddCategory(name=getcat)
+        category = Category(name=getcat)
         db.session.add(category)
         flash(f'category {getcat} added', 'success')
         db.session.commit()
@@ -20,7 +20,7 @@ def addcat():
 @app.route('/addproduct', methods=['GET', 'POST'])
 def addproduct():
     form = ProductForm(request.form)
-    categories = AddCategory.query.all()
+    categories = Category.query.all()
     if request.method == 'POST' and 'image_1' in request.files and\
         'image_2' in request.files and 'image_3' in request.files:
         # print("I am In")
@@ -40,8 +40,8 @@ def addproduct():
             'image_2'), name=secrets.token_hex(10) + ".")
         image_3 = photos.save(request.files.get(
             'image_3'), name=secrets.token_hex(10) + ".")
-        addproduct = AddProduct(name=name, color=color, size=size, price=price,
-                                category=AddCategory(name=get_category), stock=stock, discount=discount,
+        addproduct = Product(name=name, color=color, size=size, price=price,
+                                category=Category(name=get_category), stock=stock, discount=discount,
                                 description=decription, image_1=image_1, image_2=image_2, image_3=image_3)
         db.session.add(addproduct)
         db.session.commit()

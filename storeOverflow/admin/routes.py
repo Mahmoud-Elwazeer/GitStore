@@ -1,5 +1,5 @@
 from storeOverflow import app, db, bcrypt
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, session
 # from .forms import RegistrationForm
 # from storeOverflow.admin.forms import RegistrationForm
 from .forms import RegistrationForm, LoginForm
@@ -11,6 +11,10 @@ from .modules import User
 @app.route("/Home")
 def home():
     return render_template('home.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin/admin.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -39,8 +43,12 @@ def login():
     if request.method == 'POST' and form.validate():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
+            session['email'] = form.email.data
             flash('Welcom {} You are now logged in', 'success'.format(form.email.data))
-            return redirect(url_for('home'))
+            if (session['email'] == 'admin@admin.com'):
+                return redirect(url_for('admin'))
+            else:
+                return redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return redirect(url_for('login'))
