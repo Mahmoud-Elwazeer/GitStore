@@ -26,7 +26,7 @@ def tshirts():
     # tshirts = Category.query.filter_by(name=name).first_or_404()
     page = request.args.get('page', 1, type=int)
     products = Category.query.filter_by(name='T-shirts').first_or_404()
-    tshirts = Product.query.filter(Product.stock > 0, Product.category_id == products.id).paginate(page=page, per_page=8)
+    tshirts = Product.query.filter(Product.stock > 0, Product.category_id == products.id).paginate(page=page, per_page=4)
     # print(product)
     return render_template('products/tshirts.html', tshirts=tshirts)
 
