@@ -6,6 +6,21 @@ import secrets
 import os
 
 
+
+@app.route('/hoodies')
+def hoodies():
+    page = request.args.get('page', 1, type=int)
+    get_cat_hoodies = Category.query.filter_by(name='Hoodies').first_or_404()
+    hoodies = Product.query.filter(Product.stock > 0, Product.category_id==get_cat_hoodies.id).order_by(Product.id.desc()).paginate(page=page, per_page=4)
+    return (render_template('products/hoodies.html', hoodies=hoodies))
+
+@app.route('/mugs')
+def mugs():
+    page = request.args.get('page', 1, type=int)
+    get_cat_mugs = Category.query.filter_by(name='Mugs').first_or_404()
+    mugs = Product.query.filter(Product.stock > 0, Product.category_id==get_cat_mugs.id).order_by(Product.id.desc()).paginate(page=page, per_page=4)
+    return (render_template('products/mugs.html', mugs=mugs))
+
 @app.route('/tshirts')
 def tshirts():
     # tshirts = Category.query.filter_by(name=name).first_or_404()
@@ -14,6 +29,7 @@ def tshirts():
     tshirts = Product.query.filter(Product.stock > 0, Product.category_id == products.id).paginate(page=page, per_page=8)
     # print(product)
     return render_template('products/tshirts.html', tshirts=tshirts)
+
 
 
 @app.route('/addcat', methods=['GET', 'POST'])
