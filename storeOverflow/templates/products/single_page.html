@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% include 'messages.html' %}
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('tshirts')}}">T-shirts <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('hoodies')}}">Hoodies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('mugs')}}">Coffee Mugs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('register')}}">Sign Up</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login')}}">Sign In</a>
+          </li>
+        </ul>
+        </div>
+      </nav>
+</div>
+
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-md-6" id="b_image">
+            <img src="{{ url_for('static', filename='images/' + product.image_1) }}" alt="{{ product.name }}" 
+            width="300" height="300">
+        </div>
+        <div class="clo-md-6">
+            <h3>Name: <b>{{ product.name }}</b> </h3>
+            <hr>
+            <p>Price: {{ product.price }}</p>
+            {% if product.discount > 0 %}
+                <p>Discount: {{ product.discount }}</p>
+            {% endif %}
+            <hr>
+            <b>description</b>
+            <p>{{ product.description }}</p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" id="s_image">
+            <img src="{{ url_for('static', filename='images/' + product.image_1) }}" alt="{{ product.name }}" 
+            width="100" height="100">
+            <img src="{{ url_for('static', filename='images/' + product.image_2) }}" alt="{{ product.name }}" 
+            width="100" height="100">
+            <img src="{{ url_for('static', filename='images/' + product.image_3) }}" alt="{{ product.name }}" 
+            width="100" height="100">
+        </div>
+    </div>
+</div>
+
+<script>
+    const b_image = document.getElementById('b_image')
+    const s_image = document.getElementById('s_image').getElementsByTagName('img')
+
+    for(let i = 0; i < s_image.length; i++) {
+        s_image[i].addEventListener('click', function() {
+            const ImageSRC = this.getAttribute('src');
+            b_image.innerHTML = "<img src=" + ImageSRC + " width='300' height='300' >";
+        })
+    }
+
+</script>
+
+
+{% endblock %}

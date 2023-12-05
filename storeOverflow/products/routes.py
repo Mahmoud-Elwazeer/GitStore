@@ -14,12 +14,15 @@ def hoodies():
     hoodies = Product.query.filter(Product.stock > 0, Product.category_id==get_cat_hoodies.id).order_by(Product.id.desc()).paginate(page=page, per_page=4)
     return (render_template('products/hoodies.html', hoodies=hoodies))
 
+
+
 @app.route('/mugs')
 def mugs():
     page = request.args.get('page', 1, type=int)
     get_cat_mugs = Category.query.filter_by(name='Mugs').first_or_404()
     mugs = Product.query.filter(Product.stock > 0, Product.category_id==get_cat_mugs.id).order_by(Product.id.desc()).paginate(page=page, per_page=4)
     return (render_template('products/mugs.html', mugs=mugs))
+
 
 @app.route('/tshirts')
 def tshirts():
@@ -30,6 +33,10 @@ def tshirts():
     # print(product)
     return render_template('products/tshirts.html', tshirts=tshirts)
 
+@app.route('/product/<int:id>')
+def single_page(id):
+    product = Product.query.get_or_404(id)
+    return render_template('products/single_page.html', product=product)
 
 
 @app.route('/addcat', methods=['GET', 'POST'])

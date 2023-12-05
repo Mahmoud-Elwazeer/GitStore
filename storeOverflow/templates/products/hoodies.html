@@ -44,7 +44,7 @@
                     <p class="text-center">Price ${{hoody.price}}</p>
                 </div>
                 <div class="cart-footer">
-                    <a href="#" class="float-left btn btn-sm btn-primary"> details</a>
+                    <a href="{{ url_for('single_page', id=hoody.id) }}" class="float-left btn btn-sm btn-primary"> details</a>
                     <a href="#" class="float-right btn btn-sm btn-warning"> Add to Cart</a>
                 </div>
             </div>

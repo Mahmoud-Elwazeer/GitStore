@@ -44,7 +44,7 @@
                   <p class="text-center">Price ${{ tshirt.price }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="float-left btn btn-sm btn-primary">Details</a>
+                    <a href="{{ url_for('single_page', id=tshirt.id) }}" class="float-left btn btn-sm btn-primary">Details</a>
                     <a href="#" class="float-left btn btn-sm btn-warning ml-5" >Add to cart</a>
                 </div>
             </div>
