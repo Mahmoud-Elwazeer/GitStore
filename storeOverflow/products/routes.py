@@ -26,10 +26,14 @@ def updatecat(id):
         return (redirect(url_for('categories')))
     return render_template('products/updatecat.html', title='Add Category', category=category)
 
-@app.route('/deletecat/<int:id>', methods=['GET', 'POST'])
+@app.route('/deletecat/<int:id>', methods=['POST'])
 def deletecat(id):
     category = Category.query.get_or_404(id)
     if request.method == 'POST':
+        if category:
+            db.session.query(Product).\
+                filter_by(category=category).\
+                delete(synchronize_session=False)
         db.session.delete(category)
         flash(f"The brand {category.name} was deleted from your database","success")
         db.session.commit()
