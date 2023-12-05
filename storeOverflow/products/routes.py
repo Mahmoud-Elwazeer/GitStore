@@ -1,8 +1,9 @@
-from flask import render_template, url_for, request, flash, redirect
+from flask import render_template, url_for, request, flash, redirect, current_app
 from storeOverflow import app, db, photos
 from .modules import Category, Product
 from .forms import ProductForm
 import secrets
+import os
 
 
 @app.route('/addcat', methods=['GET', 'POST'])
@@ -46,7 +47,7 @@ def addproduct():
     form = ProductForm(request.form)
     categories = Category.query.all()
     if request.method == 'POST' and 'image_1' in request.files and\
-        'image_2' in request.files and 'image_3' in request.files:
+            'image_2' in request.files and 'image_3' in request.files:
         # print("I am In")
         name = form.name.data
         color = form.color.data
@@ -57,7 +58,7 @@ def addproduct():
 
         stock = form.stock.data
         discount = form.discount.data
-        decription = form.decription.data
+        description = form.description.data
         image_1 = photos.save(request.files.get(
             'image_1'), name=secrets.token_hex(10) + ".")
         image_2 = photos.save(request.files.get(
@@ -65,10 +66,92 @@ def addproduct():
         image_3 = photos.save(request.files.get(
             'image_3'), name=secrets.token_hex(10) + ".")
         addproduct = Product(name=name, color=color, size=size, price=price,
-                                category=Category(name=get_category), stock=stock, discount=discount,
-                                description=decription, image_1=image_1, image_2=image_2, image_3=image_3)
+                             category=Category(name=get_category), stock=stock, discount=discount,
+                             description=description, image_1=image_1, image_2=image_2, image_3=image_3)
         db.session.add(addproduct)
         db.session.commit()
-        return redirect(url_for('addproduct'))
+        return redirect(url_for('products_list'))
 
     return render_template('products/addproduct.html', form=form, categories=categories)
+
+
+@app.route('/updateproduct/<int:product_id>', methods=['GET', 'POST'])
+def updateproduct(product_id):
+    form = ProductForm(request.form)
+    product = Product.query.get_or_404(product_id)
+    categories = Category.query.all()
+    category = request.form.get('category')
+
+    if request.method == "POST":
+        product.name = form.name.data
+        product.color = form.color.data
+        product.size = form.size.data
+        product.price = form.price.data
+        product.stock = form.stock.data
+        product.discount = form.discount.data
+        product.description = form.description.data
+
+        if request.files.get('image_1'):
+            try:
+                os.unlink(os.path.join(current_app.root_path,
+                          "static/images/" + product.image_1))
+                product.image_1 = photos.save(request.files.get('image_1'),
+                                              name=secrets.token_hex(10) + ".")
+            except:
+                product.image_1 = photos.save(request.files.get('image_1'),
+                                              name=secrets.token_hex(10) + ".")
+        if request.files.get('image_2'):
+            try:
+                os.unlink(os.path.join(current_app.root_path,
+                          "static/images/" + product.image_2))
+                product.image_2 = photos.save(request.files.get('image_2'),
+                                              name=secrets.token_hex(10) + ".")
+            except:
+                product.image_2 = photos.save(request.files.get('image_2'),
+                                              name=secrets.token_hex(10) + ".")
+        if request.files.get('image_3'):
+            try:
+                os.unlink(os.path.join(current_app.root_path,
+                          "static/images/" + product.image_3))
+                product.image_3 = photos.save(request.files.get('image_3'),
+                                              name=secrets.token_hex(10) + ".")
+            except:
+                product.image_3 = photos.save(request.files.get('image_3'),
+                                              name=secrets.token_hex(10) + ".")
+
+        flash(f'product {form.name.data} updated successfuly', 'success')
+        db.session.commit()
+        return redirect(url_for('products_list'))
+
+    form.name.data = product.name
+    form.color.data = product.color
+    form.size.data = product.size
+    form.price.data = product.price
+    form.stock.data = product.stock
+    form.discount.data = product.discount
+    form.description.data = product.description
+
+    return render_template('products/addproduct.html', form=form,
+                           product=product, categories=categories)
+
+
+@app.route('/deleteproduct/<int:product_id>', methods=['GET', 'POST'])
+def deleteproduct(product_id):
+    product = Product.query.get_or_404(product_id)
+    if request.method == "POST":
+        try:
+            os.unlink(os.path.join(current_app.root_path,
+                                   "static/images/" + product.image_1))
+            os.unlink(os.path.join(current_app.root_path,
+                                   "static/images/" + product.image_2))
+            os.unlink(os.path.join(current_app.root_path,
+                                   "static/images/" + product.image_3))
+        except Exception as e:
+            flash(e, 'danger')
+        db.session.delete(product)
+        db.session.commit()
+        flash(f'the product {product.name} deleted successfuly', 'success')
+        return redirect(url_for('products_list'))
+    flash(f"the product {product.name} can't be deleted", 'success')
+
+    return redirect(url_for('products_list'))
