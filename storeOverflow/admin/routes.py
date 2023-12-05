@@ -4,6 +4,7 @@ from flask import render_template, url_for, flash, redirect, request, session
 # from storeOverflow.admin.forms import RegistrationForm
 from .forms import RegistrationForm, LoginForm
 from .modules import User
+from storeOverflow.products.modules import Product
 
 
 @app.route("/")
@@ -12,9 +13,16 @@ from .modules import User
 def home():
     return render_template('home.html')
 
+
 @app.route('/admin')
 def admin():
     return render_template('admin/admin.html')
+
+
+@app.route('/admin/products')
+def products_list():
+    products = Product.query.all()
+    return render_template('admin/products.html', products=products)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -30,7 +38,8 @@ def register():
                     password=hashed_pwd)
         db.session.add(user)
         db.session.commit()
-        flash('welcom {} Thanks for registering', 'success'.format(form.username.data))
+        flash('welcom {} Thanks for registering',
+              'success'.format(form.username.data))
         return redirect(url_for('home'))
     return render_template('admin/register.html', form=form, title='Regestration')
 
@@ -44,7 +53,8 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             session['email'] = form.email.data
-            flash('Welcom {} You are now logged in', 'success'.format(form.email.data))
+            flash('Welcom {} You are now logged in',
+                  'success'.format(form.email.data))
             if (session['email'] == 'admin@admin.com'):
                 return redirect(url_for('admin'))
             else:
