@@ -25,7 +25,7 @@ def categories():
     return render_template('admin/categories.html', title='Categories', categories=categories)
 
 
-@app.route('/admin/products')
+@app.route('/products')
 def products_list():
     products = Product.query.all()
     return render_template('admin/products.html', products=products)

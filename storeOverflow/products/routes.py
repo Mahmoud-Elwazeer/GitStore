@@ -66,7 +66,7 @@ def addproduct():
         image_3 = photos.save(request.files.get(
             'image_3'), name=secrets.token_hex(10) + ".")
         addproduct = Product(name=name, color=color, size=size, price=price,
-                             category=Category(name=get_category), stock=stock, discount=discount,
+                             category_id=get_category, stock=stock, discount=discount,
                              description=description, image_1=image_1, image_2=image_2, image_3=image_3)
         db.session.add(addproduct)
         db.session.commit()
@@ -87,6 +87,7 @@ def updateproduct(product_id):
         product.color = form.color.data
         product.size = form.size.data
         product.price = form.price.data
+        product.category_id = category
         product.stock = form.stock.data
         product.discount = form.discount.data
         product.description = form.description.data
@@ -127,6 +128,7 @@ def updateproduct(product_id):
     form.color.data = product.color
     form.size.data = product.size
     form.price.data = product.price
+    category = product.category.name
     form.stock.data = product.stock
     form.discount.data = product.discount
     form.description.data = product.description

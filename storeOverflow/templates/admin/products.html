@@ -4,28 +4,28 @@
 {% include 'messages.html' %}
 
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{url_for('products_list')}}">products <span class="sr-only">(current)</span></a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('products_list')}}">products <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('categories')}}">categories</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{url_for('addcat')}}">Add catgory</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('admin')}}">catgory</a>
+              <a class="nav-link" href="{{url_for('addproduct')}}">Add Product</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for('addcat')}}">Add catgory</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for('addproduct')}}">Add Product</a>
-              </li>
-          </ul>
-        </div>
-      </nav>
+        </ul>
+      </div>
+    </nav>
 </div>
 
 <div class="container">
