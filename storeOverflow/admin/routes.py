@@ -4,7 +4,7 @@ from flask import render_template, url_for, flash, redirect, request, session
 # from storeOverflow.admin.forms import RegistrationForm
 from .forms import RegistrationForm, LoginForm
 from .modules import User
-from storeOverflow.products.modules import Product
+from storeOverflow.products.modules import Product, Category
 
 
 @app.route("/")
@@ -17,6 +17,12 @@ def home():
 @app.route('/admin')
 def admin():
     return render_template('admin/admin.html')
+
+
+@app.route('/categories')
+def categories():
+    categories = Category.query.order_by(Category.id).all()
+    return render_template('admin/categories.html', title='Categories', categories=categories)
 
 
 @app.route('/admin/products')

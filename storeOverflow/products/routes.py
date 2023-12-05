@@ -17,6 +17,30 @@ def addcat():
         return redirect(url_for('addcat'))
     return render_template('products/addcat.html', title='Add Category')
 
+@app.route('/updatecat/<int:id>', methods=['GET', 'POST'])
+def updatecat(id):
+    category = Category.query.get_or_404(id)
+    newcat = request.form.get('category')
+    if request.method == 'POST':
+        category.name = newcat
+        db.session.commit()
+        return (redirect(url_for('categories')))
+    return render_template('products/updatecat.html', title='Add Category', category=category)
+
+@app.route('/deletecat/<int:id>', methods=['POST'])
+def deletecat(id):
+    category = Category.query.get_or_404(id)
+    if request.method == 'POST':
+        if category:
+            db.session.query(Product).\
+                filter_by(category=category).\
+                delete(synchronize_session=False)
+        db.session.delete(category)
+        flash(f"The brand {category.name} was deleted from your database","success")
+        db.session.commit()
+        return redirect(url_for('categories'))
+    flash(f"The brand {category.name} can't be  deleted from your database","warning")
+    return redirect(url_for('categories'))
 
 @app.route('/addproduct', methods=['GET', 'POST'])
 def addproduct():

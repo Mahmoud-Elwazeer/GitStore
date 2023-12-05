@@ -2,6 +2,35 @@
 
 {% block content %}
 
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('home')}}">T-shirts <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('home')}}">Hoodies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('home')}}">Coffee Mugs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('register')}}">Sign Up</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login')}}">Sign In</a>
+          </li>
+        </ul>
+        </div>
+      </nav>
+</div>
+
+
 <div class="container white z-depth-2">
     <div class=" row text-center col-md-8 mx-20">
         This Home page
