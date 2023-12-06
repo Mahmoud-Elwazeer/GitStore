@@ -1,60 +1,3 @@
-/*
-Template Name: Electro - HTML Ecommerce Template
-Author: yaminncco
-
-Colors:
-	Body 		: #333
-	Headers 	: #2B2D42
-	Primary 	: #D10024
-	Dark 		: #15161D ##1E1F29
-	Grey 		: #E4E7ED #FBFBFC #8D99AE #B9BABC
-
-Fonts: Montserrat
-
-Table OF Contents
-------------------------------------
-1 > GENERAL
------- Typography
------- Buttons
------- Inputs
------- Sections
------- Breadcrumb
-2 > HEADER
------- Top header
------- Logo
------- Search
------- Cart
-3 > NAVIGATION
------- Main nav
------- Responsive Nav
-4 > CATEGORY SHOP
-5 > HOT DEAL
-6 > PRODUCT
------- Product
------- Widget product
------- Product slick
-7 > STORE PAGE
------- Aside
------- Store
-8 > PRODUCT DETAILS PAGE
------- Product view
------- Product details
------- Product tab
-9 > CHECKOUT PAGE
-10 > NEWSLETTER
-11 > FOOTER
-11 > SLICK STYLE
-12 > RESPONSIVE
-------------------------------------*/
-
-/*=========================================================
-	01 -> GENERAL
-===========================================================*/
-
-/*----------------------------*\
-	Typography
-\*----------------------------*/
-
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -457,37 +400,6 @@ textarea.input {
   display: block;
 }
 
-/*----------------------------*\
-	Search
-\*----------------------------*/
-
-.header-search {
-  padding: 15px 0px;
-}
-
-.header-search form {
-  position: relative;
-}
-
-.header-search form .input-select {
-  margin-right: -4px;
-  border-radius: 40px 0px 0px 40px;
-}
-
-.header-search form .input {
-  width: calc(100% - 260px);
-  margin-right: -4px;
-}
-
-.header-search form .search-btn {
-  height: 40px;
-  width: 100px;
-  background: #D10024;
-  color: #FFF;
-  font-weight: 700;
-  border: none;
-  border-radius: 0px 40px 40px 0px;
-}
 
 /*----------------------------*\
 	Cart
@@ -708,6 +620,24 @@ textarea.input {
   }
 }
 
+
+/*=========================================================
+	-> LOGIN & REGISTER
+===========================================================*/
+
+  .siz-container {
+      display: flex;
+  }
+
+  .siz {
+      margin-right: 10px;
+      font-size: 18px; /* Adjust the font size as needed */
+  }
+
+  .siz a i {
+      font-size: 24px; /* Adjust the icon size as needed */
+  }
+
 /*=========================================================
 	04 -> CATEGORY SHOP
 ===========================================================*/
@@ -753,9 +683,11 @@ textarea.input {
 }
 
 .shop .shop-img>img {
+  height: 300px;
   width: 100%;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+  object-fit: cover;
 }
 
 .shop:hover .shop-img>img {

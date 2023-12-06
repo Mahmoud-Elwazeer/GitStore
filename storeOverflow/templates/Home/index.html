@@ -12,20 +12,23 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
 		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="style/bootstrap2.min.css"/>
+ 		<!-- <link type="text/css" rel="stylesheet" href="../../static/style/"/> -->
 
-		<!-- Slick -->
-		<link type="text/css" rel="stylesheet" href="style/slick.css"/>
-		<link type="text/css" rel="stylesheet" href="style/slick-theme.css"/>
+ 		<link type="text/css" rel="stylesheet" href="../../static/style/bootstrap2.min.css"/>
 
-		<!-- nouislider -->
-		<link type="text/css" rel="stylesheet" href="style/nouislider.min.css"/>
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="../../static/style/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="../../static/style/slick-theme.css"/>
 
-		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="style/font-awesome.min.css">
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="../../static/style/nouislider.min.css"/>
 
-		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="style/style.css"/>
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="../../static/style/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="../../static/style/style.css"/>
+
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +39,9 @@
 
     </head>
 	<body>
-		<!-- HEADER -->
+		{% extends 'layout.html' %}
+		{% block content %}
+			<!-- HEADER -->
 		<header>
 			<!-- /TOP HEADER -->
 
@@ -88,10 +93,10 @@
 										<div class="cart-list">
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product01.png" alt="">
+													<img src="./img/Coder Debugging Code Programmer Programming Gift T-shirt.jpeg" alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h3 class="product-name"><a href="#">Coder Debugging Code Programmer Programming Gift T-shirt	</a></h3>
 													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
@@ -172,11 +177,11 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
+								<img src="./img/This item is unavailable Etsy.jpeg" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>T-shirt<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="../products/tshirts.html" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -186,11 +191,11 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
+								<img src="./img/mug01.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Mug<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="../../products/mugs.html" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -200,7 +205,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
+								<img src="./img/Programmer Hoodie, Coding Hoodie, Javascript Hoodie, Eat Sleep Code Repeat Hoodie, Web Developer Hoodie, Java Programmer Gift, Developers.jpeg" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Hoddie<br>Collection</h3>
@@ -752,12 +757,12 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap2.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="../../static/js/jquery.min.js"></script>
+		<script src="../../static/js/bootstrap2.min.js"></script>
+		<script src="../../static/js/slick.min.js"></script>
+		<script src="../../static/js/nouislider.min.js"></script>
+		<script src="../../static/js/jquery.zoom.min.js"></script>
+		<script src="../../static/js/main.js"></script>
 
 	</body>
 </html>
