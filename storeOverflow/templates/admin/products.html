@@ -12,10 +12,19 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="{{url_for('products_list')}}">products <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{url_for('tshirts')}}">T-shirts <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('hoodies')}}">Hoodies <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('mugs')}}">Mugs <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('products_list')}}">products List<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('categories')}}">categories</a>
+            <a class="nav-link" href="{{url_for('categories')}}">categories List</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{{url_for('addcat')}}">Add catgory</a>
@@ -23,23 +32,23 @@
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('addproduct')}}">Add Product</a>
             </li>
-        </ul>
-      </div>
+    </ul>
+  </div>
     </nav>
 </div>
 
 <div class="container">
-    <table class="table-sm table-dark table-striped table-bordered w-auto">
+    <table class="table-sm table-dark table-striped table-bordered">
         <thead>
             <!-- <th scope="row"></th> -->
-            <th class="w-75 p-3">Name</th>
-            <th class="w-75 p-3">Number</th>
-            <th class="w-75 p-3">Prcie</th>
-            <th class="w-75 p-3">Discount</th>
-            <th class="w-75 p-3">In Stock</th>
-            <th class="w-75 p-3">Image</th>
-            <th class="w-75 p-3">Edit</th>
-            <th class="w-75 p-3">Delete</th>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Prcie</th>
+            <th>Discount</th>
+            <th>In Stock</th>
+            <th>Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </thead>
         <tbody>
             {% for product in products %}

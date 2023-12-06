@@ -60,7 +60,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="../../static/img/logo.png" alt="">
+									<img src="../../static/images/logo.png" alt="">
 								</a>
 							</div>
 						</div>
@@ -194,10 +194,11 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
+						<li class="active"><a href="{{url_for('home')}}">Home</a></li>
 						<li><a href="{{url_for('tshirts')}}">T-shirts</a></li>
-						<li><a href="{{url_for('hoodies')}}">Hoodies</a></li>
-						<li><a href="{{url_for('mugs')}}">Coffee Mugs</a></li>
+						<li><a href="{{url_for('mugs')}}">Mugs</a></li>
+						<li><a href="{{url_for('hoodies')}}">Hoddies</a></li>
+						<li><a href="#">About Us</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -383,7 +384,7 @@
 								</div>
 								<div class="product-btns">
 									<!-- <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button> -->
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<!-- <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button> -->
 									<a href="{{ url_for('single_page', id=single.id) }}" class="quick-view" ><i class="fa fa-eye"></i><span class="tooltipp"></span></a>
 								</div>
 							</div>

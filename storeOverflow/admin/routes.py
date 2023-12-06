@@ -16,7 +16,8 @@ def home():
 
 @app.route('/admin')
 def admin():
-    return render_template('admin/admin.html')
+    products = Product.query.all()
+    return render_template('admin/products.html', products=products)
 
 
 @app.route('/categories')

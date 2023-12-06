@@ -51,7 +51,7 @@
           <div class="col-md-3">
             <div class="header-logo">
               <a href="#" class="logo">
-                <img src="./img/logo.png" alt="">
+                <img src="../../static/images/logo.png" alt="">
               </a>
             </div>
           </div>
@@ -150,9 +150,9 @@
       <div id="responsive-nav">
         <!-- NAV -->
         <ul class="main-nav nav navbar-nav">
-          <li class="active"><a href="{{url_for('home')}}">Home</a></li>
+          <li ><a href="{{url_for('home')}}">Home</a></li>
           <li><a href="{{url_for('tshirts')}}">T-shirts</a></li>
-          <li><a href="{{url_for('mugs')}}">Mugs</a></li>
+          <li class="active"><a href="{{url_for('mugs')}}">Mugs</a></li>
           <li><a href="{{url_for('hoodies')}}">Hoddies</a></li>
           <li><a href="#">About Us</a></li>
         </ul>
@@ -180,7 +180,7 @@
         </div>
         <div class="product-body md-200">
           <p class="product-category">Category</p>
-          <h3 class="product-name"><a href="#">{{ mug.name }}</a></h3>
+          <h3 class="product-name"><a href="{{ url_for('single_page', id=mug.id) }}">{{ mug.name }}</a></h3>
           <h4 class="product-price">$ {{ mug.discount }}  <del class="product-old-price">$ {{ mug.price }}</del></h4>
           <div class="product-rating">
             <i class="fa fa-star"></i>
@@ -190,8 +190,8 @@
             <i class="fa fa-star"></i>
           </div>
           <div class="product-btns">
-            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+            <!-- <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button> -->
+            <a href="{{ url_for('single_page', id=mug.id) }}" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
           </div>
         </div>
         <div class="add-to-cart">
