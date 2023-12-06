@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-    {% block head %}
+  {% block head %}
     <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,8 @@
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<!-- Bootstrap -->
  		<!-- <link type="text/css" rel="stylesheet" href="../static/"/> -->
@@ -27,7 +29,7 @@
 
  		<!-- Custom stlylesheet -->
  		<link type="text/css" rel="stylesheet" href="../static/style/style.css"/>
-    {% endblock head %}
+  {% endblock head %}
 
 
 {% block content %}
@@ -51,7 +53,7 @@
           </div>
         </div>
         <!-- /LOGO -->
-        
+
         <!-- ACCOUNT -->
         <div class="col-md-3 clearfix">
           <div class="header-ctn">
@@ -145,7 +147,7 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="{{url_for('home')}}">Home</a></li>
         <li><a href="{{url_for('tshirts')}}">T-shirts</a></li>
         <li><a href="{{url_for('mugs')}}">Mugs</a></li>
         <li><a href="{{url_for('hoodies')}}">Hoddies</a></li>
@@ -581,26 +583,6 @@
 
 <!-- /SECTION -->
 
-<!-- NEWSLETTER -->
-<div id="newsletter" class="section">
-  <!-- container -->
-  <div class="container">
-    <!-- row -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="newsletter">
-          <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-          <form>
-            <a href="{{ url_for('register') }}"><button class="btn btn-danger" type="button"><i class="rounded-pill"></i> Sign UP Now</button></a>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- /row -->
-  </div>
-  <!-- /container -->
-</div>
-<!-- /NEWSLETTER -->
 
 <!-- FOOTER -->
 <footer id="footer">
@@ -665,27 +647,6 @@
   </div>
   <!-- /top footer -->
 
-  <!-- bottom footer -->
-  <div id="bottom-footer" class="section">
-    <div class="container">
-      <!-- row -->
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <ul class="footer-payments">
-            <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-            <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-            <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-            <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-            <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-            <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-          </ul>
-        </div>
-      </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-  </div>
-  <!-- /bottom footer -->
 </footer>
 <!-- /FOOTER -->
 
@@ -696,8 +657,5 @@
 <script src="../static/js/nouislider.min.js"></script>
 <script src="../static/js/jquery.zoom.min.js"></script>
 <script src="../static/js/main.js"></script>
-
-
-
 
 {% endblock %}
