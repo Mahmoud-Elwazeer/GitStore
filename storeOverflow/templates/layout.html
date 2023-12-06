@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='style/bootstrap.min.css')}}">
-    {% if title %}
-        <title>{{title}}</title>
-        {% else %}
-        <title>Shop</title>
-    {% endif %}
+    {% block head %}
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{{url_for('static', filename='style/bootstrap.min.css')}}">
+      {% if title %}
+          <title>{{title}}</title>
+          {% else %}
+          <title>Shop</title>
+      {% endif %}
+  {% endblock head %}
   </head>
   
   <body>

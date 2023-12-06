@@ -9,7 +9,7 @@ class ProductForm(Form):
     color = StringField('Colors', validators=[DataRequired()])
     size = StringField('Size', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
-    stock = IntegerField('Stock', validators=[DataRequired()])
+    stock = FloatField('Stock', validators=[DataRequired()])
     discount = IntegerField('Discount', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     image_1 = FileField('Image 1', validators=[FileRequired(),
