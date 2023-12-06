@@ -36,7 +36,9 @@ def tshirts():
 @app.route('/product/<int:id>')
 def single_page(id):
     product = Product.query.get_or_404(id)
-    return render_template('products/single_page.html', product=product)
+    related_products = Product.query.filter(Product.stock > 0, Product.category_id == product.category_id).order_by(Product.id.desc())
+
+    return render_template('products/product.html', product=product, related_products=related_products[:4])
 
 
 @app.route('/addcat', methods=['GET', 'POST'])
