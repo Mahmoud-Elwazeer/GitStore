@@ -167,39 +167,45 @@
 
 
 <div class="container">
-    <div class="row mb-100">
-      {% if mugs %}
-      {% for mug in mugs %}
-      <div class="product col-md-3">
-        <div class="product-img">
-          <img src="{{url_for('static', filename='images/' + mug.image_1)}}" alt="{{ mug.name }}  class="card-img-top"">
-          <div class="product-label">
-            <span class="sale">-30%</span>
-            <span class="new">NEW</span>
-          </div>
-        </div>
-        <div class="product-body md-200">
-          <p class="product-category">Category</p>
-          <h3 class="product-name"><a href="{{ url_for('single_page', id=mug.id) }}">{{ mug.name }}</a></h3>
-          <h4 class="product-price">$ {{ mug.discount }}  <del class="product-old-price">$ {{ mug.price }}</del></h4>
-          <div class="product-rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </div>
-          <div class="product-btns">
-            <!-- <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button> -->
-            <a href="{{ url_for('single_page', id=mug.id) }}" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-          </div>
-        </div>
-        <div class="add-to-cart">
-          <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+  <div class="row mb-100">
+    {% if mugs %}
+    {% for mug in mugs %}
+    <div class="product col-md-3">
+      <div class="product-img">
+        <img src="{{url_for('static', filename='images/' + mug.image_1)}}" alt="{{ mug.name }}  class="card-img-top"">
+        <div class="product-label">
+          {% if mug.discount %}
+            <span class="sale">{{mug .discount}}%</span>
+            {% endif %}
         </div>
       </div>
-      {% endfor %}
+      <div class="product-body md-200">
+        <p class="product-category">Category</p>
+        <h3 class="product-name"><a href="{{ url_for('single_page', id=mug.id) }}">{{ mug.name }}</a></h3>
+        {% if mug.discount %}
+          {% set new_price = (mug.price | float) - (mug.price | float * (mug.discount / 100)) %}
+          <h4 class="product-price">${{new_price}} <del class="product-old-price">${{mug.price}}</del></h4>
+          {% else %}
+          <h4 class="product-price">${{mug.price}}</h4>
+          {% endif %}
+        <div class="product-rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+        <div class="product-btns">
+          <!-- <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button> -->
+          <a class="quick-view" href="{{ url_for('single_page', id=mug.id) }}"><i class="fa fa-eye"></i><span class="tooltipp"></span></a>
+        </div>
+      </div>
+      <div class="add-to-cart">
+        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 
     <div class="row mt-100" style="margin-top: 60px; margin-bottom: 30px;">
         <div class="col text-center">

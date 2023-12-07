@@ -174,14 +174,21 @@
         <div class="product-img">
           <img src="{{url_for('static', filename='images/' + tshirt.image_1)}}" alt="{{ tshirt.name }}  class="card-img-top"">
           <div class="product-label">
-            <span class="sale">-30%</span>
-            <span class="new">NEW</span>
+            {% if tshirt.discount %}
+            <span class="sale">{{tshirt .discount}}%</span>
+            {% endif %}
+            <!-- <span class="new">NEW</span> -->
           </div>
         </div>
         <div class="product-body md-200">
           <p class="product-category">Category</p>
           <h3 class="product-name"><a href="{{ url_for('single_page', id=tshirt.id) }}">{{ tshirt.name }}</a></h3>
-          <h4 class="product-price">$ {{ tshirt.discount }}  <del class="product-old-price">$ {{ tshirt.price }}</del></h4>
+          {% if tshirt.discount %}
+          {% set new_price = (tshirt.price | float) - (tshirt.price | float * (tshirt.discount / 100)) %}
+          <h4 class="product-price">${{new_price}} <del class="product-old-price">${{tshirt.price}}</del></h4>
+          {% else %}
+          <h4 class="product-price">${{tshirt.price}}</h4>
+          {% endif %}
           <div class="product-rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>

@@ -266,7 +266,12 @@
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
 							</div> -->
 							<div>
-								<h3 class="product-price">${{product.price}} <del class="product-old-price">$990.00</del></h3>
+								{% if product.discount %}
+								{% set new_price = (product.price | float) - (product.price | float * (product.discount / 100)) %}
+								<h3 class="product-price">${{new_price}} <del class="product-old-price">${{product.price}}</del></h3>
+								{% else %}
+								<h3 class="product-price">${{product.price}}</h3>
+								{% endif %}
 								<span class="product-available">In Stock</span>
 							</div>
 							<p>{{product.description}}</p>
@@ -379,7 +384,12 @@
 							<div class="product-body">
 								<p class="product-category">Category</p>
 								<h3 class="product-name"><a href="{{ url_for('single_page', id=single.id) }}">{{single.name}}</a></h3>
-								<h4 class="product-price">${{single.price}} <del class="product-old-price">${{single.price}}</del></h4>
+								{% if single.discount %}
+								{% set new_price = (single.price | float) - (single.price | float * (single.discount / 100)) %}
+								<h4 class="product-price">${{new_price}} <del class="product-old-price">${{single.price}}</del></h4>
+								{% else %}
+								<h4 class="product-price">${{single.price}}</h4>
+								{% endif %}
 								<div class="product-rating">
 								</div>
 								<div class="product-btns">

@@ -11,7 +11,8 @@ from storeOverflow.products.modules import Product, Category
 @app.route("/home")
 @app.route("/Home")
 def home():
-    return render_template('home.html')
+    products = Product.query.order_by(Product.id.desc())
+    return render_template('home.html', products=products)
 
 
 @app.route('/admin')
