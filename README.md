@@ -4,7 +4,7 @@
 
 
 <p align="center">
-  <img src="../GitStore/storeOverflow/static/img/gitstore-logo.png" alt="GitStore Logo">
+  <img src="./storeOverflow/static/img/gitstore-logo.png" alt="GitStore Logo">
 </p>
 <h1 align="center">GitStore | <a href="http://mahmoudelwazeer.tech">Demo</a></h1>
 
