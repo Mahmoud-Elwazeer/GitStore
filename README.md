@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 
 [![Contributors][contributors-shield]][contributors-url]
 
@@ -19,18 +21,17 @@
 GitStore is an e-commerce website that focused on selling t-shirts, mugs and hoddies for computer science engineers
 
 ### Built With
-* [![Python][Python]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
+* [![Python][Python]][python-url]
+* [![flask][flask]][flask-url]
+* [![javaScript][javaScript]][javaScript-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 ### Online Demo
 Check out the online demo for Matomo at http://mahmoudelwazeer.tech or 
 http://karimmoharm.tech
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 # Installation
@@ -77,6 +78,9 @@ python3 run.py
 
 That's it! You should now have the Git Store website up and running locally.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 # Usage
 
@@ -107,6 +111,9 @@ That's it! You should now have the Git Store website up and running locally.
 
 4. Complete the purchase by providing payment details.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 # Contributing
 
@@ -131,7 +138,16 @@ git branch -b your-branch-name
 
 5. commit the changes and push them to github and make a pull request and we will review the changes before mergin it 
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 # Related projects
+
+Explore these related projects that complement Git Store:
+
+1. **[merchshop](https://merchshop.in/product-category/geek-programmers-coding-developer-tshirts-india/):**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -143,3 +159,15 @@ git branch -b your-branch-name
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 
 [contributors-url]: https://github.com/Mahmoud-Elwazeer/GitStore/graphs/contributors
+[python-url]: https://www.python.org/
+[flask-url]: https://flask.palletsprojects.com/en/3.0.x/
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[javaScript-url]: https://getbootstrap.com
+
+[python]: https://img.shields.io/badge/python-0769AD?style=for-the-badge&logo=python&logoColor=yellow&white
+[flask]: https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white
+
+[javaScript]: https://img.shields.io/badge/javaScript-20232A?style=for-the-badge&logo=javaScript&logoColor=yellow
+
+
