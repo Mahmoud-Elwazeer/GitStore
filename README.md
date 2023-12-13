@@ -17,7 +17,7 @@ GitStore is an e-commerce website that focused on selling t-shirts, mugs and hod
 it Built with Python, Flask and bootstrap
 
 ### Online Demo
-Check out the online demo for Matomo at http://mahmoudelwazee.tech or 
+Check out the online demo for Matomo at http://mahmoudelwazeer.tech or 
 http://karimmoharm.tech
 
 
