@@ -9,7 +9,7 @@
 <h1 align="center">GitStore | <a href="http://mahmoudelwazeer.tech">Demo</a></h1>
 
 
-![website Preview](../GitStore/storeOverflow/static/img/gitstore-website.png)
+![website Preview](./storeOverflow/static/img/gitstore-website.png)
 
 
 # Introduction
