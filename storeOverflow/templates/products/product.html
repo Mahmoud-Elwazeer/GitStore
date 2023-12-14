@@ -252,78 +252,76 @@
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
-					<div class="col-md-5">
-						<div class="product-details">
-							<h2 class="product-name">{{product.name}}</h2>
-							<!-- <div>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<a class="review-link" href="#">10 Review(s) | Add your review</a>
-							</div> -->
-							<div>
-								{% if product.discount %}
-								{% set new_price = (product.price | float) - (product.price | float * (product.discount / 100)) %}
-								<h3 class="product-price">${{new_price}} <del class="product-old-price">${{product.price}}</del></h3>
-								{% else %}
-								<h3 class="product-price">${{product.price}}</h3>
-								{% endif %}
-								<span class="product-available">In Stock</span>
-							</div>
-							<p>{{product.description}}</p>
-
-							<div class="product-options">
-								<label>
-									Size
-									<select class="input-select">
-										{% set size = product.size.split(',') %}
-										{% for i in size %}
-										<option value="0">{{i}}</option>
-										{% endfor %}
-									</select>
-								</label>
-								<label>
-									Color
-									<select class="input-select">
-										{% set colors = product.color.split(',') %}
-										{% for color in colors %}
-										<option value="0">{{color}}</option>
-										{% endfor %}
-									</select>
-								</label>
-							</div>
-
-							<div class="add-to-cart">
-								<div class="qty-label">
-									Qty
-									<div class="input-number">
-										<input type="number">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
+					<form action="{{ url_for('addtocart') }}" method="POST">
+						<input type="hidden" name="product_id" value="{{ product.id }}">
+						<div class="col-md-5">
+							<div class="product-details">
+								<h2 class="product-name">{{product.name}}</h2>
+								<!-- <div>
+									<div class="product-rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-o"></i>
 									</div>
+									<a class="review-link" href="#">10 Review(s) | Add your review</a>
+								</div> -->
+								<div>
+									{% if product.discount %}
+									{% set new_price = (product.price | float) - (product.price | float * (product.discount / 100)) %}
+									<h3 class="product-price">${{new_price}} <del class="product-old-price">${{product.price}}</del></h3>
+									{% else %}
+									<h3 class="product-price">${{product.price}}</h3>
+									{% endif %}
+									<span class="product-available">In Stock</span>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								<p>{{product.description}}</p>
+	
+								<div class="product-options">
+									<label>
+										Size
+										<select class="input-select" name="size">
+											{% set size = product.size.split(',') %}
+											{% for i in size %}
+											<option value="{{ i }}">{{i}}</option>
+											{% endfor %}
+										</select>
+									</label>
+									<label>
+										Color
+										<select class="input-select" name="colors">
+											{% set colors = product.color.split(',') %}
+											{% for color in colors %}
+											<option value="{{ color }}">{{color}}</option>
+											{% endfor %}
+										</select>
+									</label>
+								</div>
+	
+								<div class="add-to-cart">
+									<div class="qty-label">
+										Qty
+										<div class="input-number">
+											<input type="number" value="1" name="quentity">
+											<span class="qty-up">+</span>
+											<span class="qty-down">-</span>
+										</div>
+									</div>
+									<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								</div>
+	
+								<!-- <ul class="product-links">
+									<li>Share:</li>
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+								</ul> -->
+	
 							</div>
-
-							<ul class="product-btns">
-								<!-- <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li> -->
-								<li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-							</ul>
-
-							<ul class="product-links">
-								<li>Share:</li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-							</ul>
-
 						</div>
-					</div>
+					</form>
 					<!-- /Product details -->
 
 					<!-- Product tab -->

@@ -9,7 +9,7 @@ class Category(db.Model):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=False)
-    color = db.Column(db.String(20), nullable=False, unique=False)
+    color = db.Column(db.String(200), nullable=False, unique=False)
     size = db.Column(db.String(30), nullable=False, unique=False)
     price = db.Column(db.Numeric(10, 2), nullable=False, unique=False)
 
