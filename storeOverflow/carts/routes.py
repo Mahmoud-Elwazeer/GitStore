@@ -16,7 +16,7 @@ def addtocart():
     try:
         product_id = request.form.get("product_id")
         color = request.form.get("colors")
-        quentity = request.form.get("quentity")
+        quantity = request.form.get("quantity")
         size = request.form.get("size")
         product  = Product.query.filter_by(id=product_id).first_or_404()
 
@@ -24,29 +24,19 @@ def addtocart():
             productsDict = {product_id: {
                 'name': product.name,
                 'price': float(product.price),
-                'size': size, 'quentity': int(quentity), 'color': color,
+                'size': size, 'quantity': int(quantity), 'color': color,
                 'discount': product.discount,
                 'image': product.image_1,
                 'colors': product.color,
                 'sizes': product.size
             }}
             if 'ShooppingCart' in session:
-                # print('=========================')
-                # print(session['Shoopping'])
-                # print('=========================')
                 if product_id in session['ShooppingCart']:
                     print('here')
                     for key, value in session['ShooppingCart'].items():
                         if key == product_id:
-                            # print(type(key), type(product_id))
                             session.modified = True
-                            value['quentity'] =  int(value['quentity']) + 1
-                            # print(type(value['quentity']))
-                            # print('here322')
-                    print('=========================')
-                    print(session['ShooppingCart'])
-                    print('=========================')
-
+                            value['quantity'] =  int(value['quantity']) + 1
                 else:
                     session['ShooppingCart'] = mergeDict(session['ShooppingCart'], productsDict)
                     return redirect(request.referrer)
@@ -57,6 +47,19 @@ def addtocart():
         flash (e, 'danger')
     finally:
         return redirect(request.referrer)
+
+
+@app.route('/getcart', methods=['GET', 'POST'])
+def getcart():
+    if 'ShooppingCart' not in session:
+        return redirect(url_for('home'))
+    total = 0
+    for key, value in session['ShooppingCart'].items():
+        new_price = value['price'] - (value['discount'] / 100.0 )* value['price']
+        sub_total = new_price * int(value['quantity'])
+        total += sub_total
+
+    return render_template('products/cart.html', total=total)
 
 
 
