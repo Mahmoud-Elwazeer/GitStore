@@ -73,48 +73,15 @@
                 <!-- /Wishlist -->
     
                 <!-- Cart -->
-                <div class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span>Your Cart</span>
-                    <div class="qty">3</div>
-                  </a>
-    
-                  <div class="cart-dropdown">
-                    <div class="cart-list">
-                      <div class="product-widget">
-                        <div class="product-img">
-                          <img src="../static/img/Debugging Code Programmer Programming Gift T-shirt.jpeg" alt="">
-                        </div>
-                        <div class="product-body">
-                          <h3 class="product-name"><a href="#">Coder Debugging Code Programmer Programming Gift T-shirt	</a></h3>
-                          <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                        </div>
-                        <button class="delete"><i class="fa fa-close"></i></button>
-                      </div>
-    
-                      <div class="product-widget">
-                        <div class="product-img">
-                          <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                          <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                          <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                        </div>
-                        <button class="delete"><i class="fa fa-close"></i></button>
-                      </div>
-                    </div>
-                    <div class="cart-summary">
-                      <small>3 Item(s) selected</small>
-                      <h5>SUBTOTAL: $2940.00</h5>
-                    </div>
-                    <div class="cart-btns">
-                      <a href="#">View Cart</a>
-                      <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- /Cart -->
+            <div class="dropdown">
+              <a href="{{ url_for('getcart') }}" 
+                class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+                <div class="qty">{{ session['ShooppingCart']|length }}</div>
+              </a>
+            </div>
+            <!-- /Cart -->
     
                 <div class="siz-container">
                   <div class="siz">
@@ -200,7 +167,6 @@
                   <div class="entry-content">
                     <div class="woocommerce">
                       <div class="woocommerce-notices-wrapper"></div>
-                      <form class="woocommerce-cart-form" action="" method="POST">
                         <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
                           cellspacing="0">
                           <thead>
@@ -222,13 +188,14 @@
                               <th>Discount</th>
                               <th>Subtotal</th>
                               <th>Update</th>
-                              <th>Delete</th>
+                              <th>Remove</th>
                             </tr>
                           </thead>
                           <tbody>
                             {% for key, value in session['ShooppingCart'].items() %}
-                            {% set new_price = value.price - (value.discount / 100.0 * value.price) %}
-                            {% set sub_total = new_price * value.quantity %}
+                            {% set new_price = value.price|float - (value.discount / 100.0 * value.price|float) %}
+                            {% set sub_total = new_price|float * value.quantity|int %}
+                            <form class="woocommerce-cart-form" action="{{ url_for('updatecart', id=key) }}" method="post">
                             <tr class="woocommerce-cart-form__cart-item cart_item">
                               <td>{{loop.index}}</td>
                               <td class="product-thumbnail">
@@ -275,8 +242,15 @@
                               </td>
                               <td>{{value.discount}}%</td>
                               <td>{{sub_total}}</td>
-                              <td><button class="btn btn-info btn-sm">Update</button></td>
-                              <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                              <td>
+                                <button type="submit" class="btn btn-info btn-sm">Update</button>
+                              </td>
+                            </form>
+                            <form class="woocommerce-cart-form" action="{{ url_for('removecart', id=key) }}" method="post">
+                            <td>
+                              <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                          </td>
                             </tr>
                             {% endfor %}
                             <!-- <tr>
@@ -303,7 +277,6 @@
                               <td> <a href="" class="btn btn-success"> Order now </a> </td>
                           </tr>
                        </table>
-                      </form>
                     </div>
                   </div><!-- .entry-content -->
                 </article><!-- #post-## -->
