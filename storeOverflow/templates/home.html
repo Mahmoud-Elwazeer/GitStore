@@ -62,8 +62,7 @@
 
             <!-- Cart -->
             <div class="dropdown">
-              <a href="{{ url_for('getcart') }}" 
-                class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              <a href="{{ url_for('getcart') }}">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Your Cart</span>
                 <div class="qty">{{ session['ShooppingCart']|length }}</div>
@@ -236,7 +235,7 @@
                     </div>
                   </div>
                   <div class="add-to-cart">
-                    <a href="{{  }}">
+                    <a href="">
                       <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </a>
                   </div>

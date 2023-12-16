@@ -34,12 +34,8 @@ def addtocart():
             }}
             if 'ShooppingCart' in session:
                 if product_id in session['ShooppingCart']:
-                    print('here11')
                     for key, value in session['ShooppingCart'].items():
-                        print('here222')
                         if int(key) == int(product_id):
-                            print('here222')
-                            print(type(quantity), type(key), type(product_id))
                             session.modified = True
                             value['quantity'] += 1
                 else:

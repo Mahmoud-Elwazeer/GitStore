@@ -63,14 +63,13 @@
               <!-- /Wishlist -->
   
               <!-- Cart -->
-            <div class="dropdown">
-              <a href="{{ url_for('getcart') }}" 
-                class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Your Cart</span>
-                <div class="qty">{{ session['ShooppingCart']|length }}</div>
-              </a>
-            </div>
+              <div class="dropdown">
+                <a href="{{ url_for('getcart') }}">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span>Your Cart</span>
+                  <div class="qty">{{ session['ShooppingCart']|length }}</div>
+                </a>
+              </div>
             <!-- /Cart -->
   
               <div class="siz-container">
@@ -137,6 +136,31 @@
   <div class="row mb-100">
     {% if mugs %}
     {% for mug in mugs %}
+
+    <form action="{{ url_for('addtocart') }}" method="POST">
+      <input type="hidden" name="product_id" value="{{ mug.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <div class="product-options" hidden>
+        <label>
+          Size
+          <select class="input-select" name="size">
+            {% set size = mug.size.split(',') %}
+            {% for i in size %}
+            <option value="{{ i }}">{{i}}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>
+          Color
+          <select class="input-select" name="colors">
+            {% set colors = mug.color.split(',') %}
+            {% for color in colors %}
+            <option value="{{ color }}">{{color}}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+
     <div class="product col-md-3">
       <div class="product-img">
         <img src="{{url_for('static', filename='images/' + mug.image_1)}}" alt="{{ mug.name }}  class="card-img-top"">
@@ -171,6 +195,7 @@
         <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
       </div>
     </div>
+    </form>
     {% endfor %}
   </div>
 
