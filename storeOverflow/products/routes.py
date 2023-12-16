@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, flash, redirect, current_app
-from storeOverflow import app, db, photos
+from storeOverflow import app, db, photos, search
 from .modules import Category, Product
 from .forms import ProductForm
 import secrets
@@ -196,4 +196,6 @@ def deleteproduct(product_id):
 
 @app.route('/result')
 def result():
-    pass
+    search_word = request.args.get('q')
+    result = Product.query.msearch(search_word, fields=['name', 'description'], limit=3)
+    render_template ('products/result.html', result=result)

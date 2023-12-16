@@ -27,8 +27,8 @@ patch_request_class(app)
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-# search = Search()
-# search.init_app(app)
+search = Search()
+search.init_app(app)
 
 from storeOverflow.admin import routes
 from storeOverflow.products import routes
