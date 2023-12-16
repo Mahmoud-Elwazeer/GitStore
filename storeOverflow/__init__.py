@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 import os
+from flask_msearch import Search
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -26,6 +27,8 @@ patch_request_class(app)
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+# search = Search()
+# search.init_app(app)
 
 from storeOverflow.admin import routes
 from storeOverflow.products import routes

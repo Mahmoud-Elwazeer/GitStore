@@ -206,7 +206,32 @@
               <div class="products-slick" data-nav="#slick-nav-1">
                 <!-- product -->
                 {% for product in products[:5] %}
+
                 <div class="product">
+                  <form action="{{ url_for('addtocart') }}" method="POST">
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <div class="product-options" hidden>
+                      <label>
+                        Size
+                        <select class="input-select" name="size">
+                          {% set size = product.size.split(',') %}
+                          {% for i in size %}
+                          <option value="{{ i }}">{{i}}</option>
+                          {% endfor %}
+                        </select>
+                      </label>
+                      <label>
+                        Color
+                        <select class="input-select" name="colors">
+                          {% set colors = product.color.split(',') %}
+                          {% for color in colors %}
+                          <option value="{{ color }}">{{color}}</option>
+                          {% endfor %}
+                        </select>
+                      </label>
+                    </div>
+  
                   <div class="product-img">
                     <img src="{{ url_for('static', filename='images/' + product.image_1) }}" alt="{{ product.name }}" height="300" width="300" >
                     <div class="product-label">
@@ -240,6 +265,7 @@
                     </a>
                   </div>
                 </div>
+                </form>
                 {% endfor %}
                 <!-- /product -->
               </div>
@@ -285,6 +311,30 @@
                 <!-- product -->
                 {% for product in products[3:9] %}
                 <div class="product">
+                  <form action="{{ url_for('addtocart') }}" method="POST">
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <div class="product-options" hidden>
+                      <label>
+                        Size
+                        <select class="input-select" name="size">
+                          {% set size = product.size.split(',') %}
+                          {% for i in size %}
+                          <option value="{{ i }}">{{i}}</option>
+                          {% endfor %}
+                        </select>
+                      </label>
+                      <label>
+                        Color
+                        <select class="input-select" name="colors">
+                          {% set colors = product.color.split(',') %}
+                          {% for color in colors %}
+                          <option value="{{ color }}">{{color}}</option>
+                          {% endfor %}
+                        </select>
+                      </label>
+                    </div>
+
                   <div class="product-img">
                     <img src="{{ url_for('static', filename='images/' + product.image_1) }}" alt="{{ product.name }}" height="300" width="300" >
                     <div class="product-label">
@@ -315,6 +365,7 @@
                   <div class="add-to-cart">
                     <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                   </div>
+                </form>
                 </div>
                 {% endfor %}
                 <!-- /product -->

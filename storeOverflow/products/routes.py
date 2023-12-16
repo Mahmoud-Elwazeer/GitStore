@@ -192,3 +192,8 @@ def deleteproduct(product_id):
     flash(f"the product {product.name} can't be deleted", 'success')
 
     return redirect(url_for('products_list'))
+
+
+@app.route('/result')
+def result():
+    pass
