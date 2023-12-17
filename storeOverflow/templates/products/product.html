@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>Single Page</title>
 
  		<!-- Google font -->
  		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -85,73 +85,62 @@
 						<!-- /SEARCH BAR -->
 
 						<!-- ACCOUNT -->
-						
-						<!-- ACCOUNT -->
-						<div class="col-md-3 clearfix">
+						<div class="col-md-4 clearfix">
 							<div class="header-ctn">
-								<!-- Wishlist -->
-								<!-- <div>
-									<a href="#">
-										<i class="fa fa-heart-o"></i>
-										<span>Your Wishlist</span>
-										<div class="qty">2</div>
-									</a>
-								</div> -->
-								<!-- /Wishlist -->
-
-								 <!-- Cart -->
-								 <div class="dropdown">
-									<a href="{{ url_for('getcart') }}">
-									  <i class="fa fa-shopping-cart"></i>
-									  <span>Your Cart</span>
-									  <div class="qty">{{ session['ShooppingCart']|length }}</div>
-									</a>
-								  </div>
-								  <!-- /Cart -->
-
-								
-                  {% if current_user.is_authenticated %}
-                  <div class="siz-container">
-                    <div class="siz">
-                        <a href="{{ url_for('logout') }}">
-                            <i class="fa fa-sign-out"></i>
-                            <span>Logout</span>
-                        </a>
-                    </div>
-      
-                    <div class="siz">
-                        <i class="fa fa-user"></i>
-                        <span>{{ current_user.username }}</span>
-                  </div>
-                  </div>
-                  {% else %}
-                  <div class="siz-container">
-                    <div class="siz">
-                        <a href="{{ url_for('register') }}">
-                            <i class="fa fa-user-plus"></i>
-                            <span>Register</span>
-                        </a>
-                    </div>
-                
-                    <div class="siz">
-                        <a href="{{ url_for('login') }}">
-                            <i class="fa fa-sign-in"></i>
-                            <span>Login</span>
-                        </a>
-                    </div>
-                </div>
-                  {% endif %}
-								<!-- Menu Toogle -->
-								<div class="menu-toggle">
-									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
+							  <!-- /Wishlist -->
+							<!-- Cart -->
+							<div class="siz-container dropdown">
+							  <a href="{{ url_for('getcart') }}">
+								<i class="fa fa-shopping-cart"></i>
+								<span>Your Cart</span>
+								<div class="qty">{{ session['ShooppingCart']|length }}</div>
+							  </a>
+							</div>
+							<!-- /Cart -->
+				  
+							  {% if current_user.is_authenticated %}
+				  
+							  <!-- <div class="siz-container ml-30"> -->
+								<div class="siz">
+									<a href="{{ url_for('logout') }}">
+										<i class="fa fa-sign-out"></i>
+										<span>Logout</span>
 									</a>
 								</div>
-								<!-- /Menu Toogle -->
+								<div class="siz">
+									<i class="fa fa-user"></i>
+									<span>{{ current_user.username }}</span>
+							  </div>
+							  <!-- </div> -->
+							  {% else %}
+							  <div class="siz-container">
+								<div class="siz">
+									<a href="{{ url_for('register') }}">
+										<i class="fa fa-user-plus"></i>
+										<span>Register</span>
+									</a>
+								</div>
+							
+								<div class="siz">
+									<a href="{{ url_for('login') }}">
+										<i class="fa fa-sign-in"></i>
+										<span>Login</span>
+									</a>
+								</div>
 							</div>
-						</div>
-						<!-- /ACCOUNT -->
+							  {% endif %}
+				  
+							  <!-- Menu Toogle -->
+							  <div class="menu-toggle">
+								<a href="#">
+								  <i class="fa fa-bars"></i>
+								  <span>Menu</span>
+								</a>
+							  </div>
+							  <!-- /Menu Toogle -->
+							</div>
+						  </div>
+						  <!-- /ACCOUNT -->
 					</div>
 					<!-- row -->
 				</div>
@@ -267,8 +256,8 @@
 										Color
 										<select class="input-select" name="colors">
 											{% set colors = product.color.split(',') %}
-                      {% for color in colors %}
-											  <option value="{{ color }}">{{ color }}</option>
+                      						{% for color in colors %}
+											<option value="{{ color }}">{{ color }}</option>
 											{% endfor %}
 										</select>
 									</label>

@@ -38,4 +38,5 @@ login_manager.init_app(app)
 from storeOverflow.admin import routes
 from storeOverflow.products import routes
 from storeOverflow.carts import routes
+from storeOverflow.orders import routes
 
