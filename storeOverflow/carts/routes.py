@@ -58,13 +58,15 @@ def addtocart():
 def getcart():
     if 'ShooppingCart' not in session:
         return redirect(url_for('home'))
-    total = float(0)
+    total = 0
+    grand_total = 0
     for key, value in session['ShooppingCart'].items():
         new_price = float( value['price']) - float((value['discount'] / 100.0 )) * float(value['price'])
         sub_total = float(new_price) * int(value['quantity'])
         total += float(sub_total)
+        grand_total = ("0.2f" % float(total))
 
-    return render_template('products/cart.html', total=total)
+    return render_template('products/cart.html', total=total, grand_total=grand_total)
 
 
 

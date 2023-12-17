@@ -325,10 +325,10 @@
 						</div> -->
 						<div class="order-col">
 							<div><strong>TOTAL</strong></div>
-							<div><strong class="order-total">${{total}}</strong></div>
+							<div><strong class="order-total">${{grand_total}}</strong></div>
 						</div>
 					</div>
-					<div class="payment-method">
+					<!-- <div class="payment-method">
 						<div class="input-radio">
 							<input type="radio" name="payment" id="payment-1">
 							<label for="payment-1">
@@ -362,15 +362,31 @@
 									incididunt ut labore et dolore magna aliqua.</p>
 							</div>
 						</div>
-					</div>
-					<div class="input-checkbox">
+					</div> -->
+					<!-- <div class="input-checkbox">
 						<input type="checkbox" id="terms">
 						<label for="terms">
 							<span></span>
 							I've read and accept the <a href="#">terms & conditions</a>
 						</label>
-					</div>
-					<a href="#" class="primary-btn order-submit">Place order</a>
+					</div> -->
+					<!-- <a href="#" class="primary-btn order-submit">
+						Place order
+					</a> -->
+					<form action="{{ url_for('payment') }}" method="POST" class="text-center">
+						{% set total_amount = grand_total.replace('.', '') %}
+						<input type="hidden" name="total" value="{{total_amount}}">
+						<input type="hidden" name="bill" value="{{orders.bill}}">
+						<script
+						  src="https://checkout.stripe.com/checkout.js"
+						  class="stripe-button" 
+						  data-key="pk_test_51OIsGsKY9skAwhSBwuuqBAvHbENXXdWbUVfUcyJLnqiJPURWLJYLUeE501EwESzIKGSXYxfJ6aSeuKfJSCiYOLDk00xCKkBGUh"
+						  data-name="Custom t-shirt"
+						  data-description="Your custom designed t-shirt"
+						  data-amount="{{total_amount}}"
+						  data-currency="gbp">
+						</script>
+					  </form>
 				</div>
 				<!-- /Order Details -->
 			</div>
