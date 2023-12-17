@@ -198,4 +198,4 @@ def deleteproduct(product_id):
 def result():
     search_word = request.args.get('q')
     result = Product.query.msearch(search_word, fields=['name', 'description'], limit=3)
-    render_template ('products/result.html', result=result)
+    return render_template ('products/result.html', result=result)
