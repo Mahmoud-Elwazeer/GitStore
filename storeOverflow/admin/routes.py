@@ -1,10 +1,11 @@
-from storeOverflow import app, db, bcrypt
+from storeOverflow import app, db, bcrypt, login_manager
 from flask import render_template, url_for, flash, redirect, request, session
 # from .forms import RegistrationForm
 # from storeOverflow.admin.forms import RegistrationForm
 from .forms import RegistrationForm, LoginForm
 from .modules import User
 from storeOverflow.products.modules import Product, Category
+from flask_login import login_user, current_user, login_required, logout_user, LoginManager
 
 
 @app.route("/")
@@ -31,6 +32,11 @@ def categories():
 def products_list():
     products = Product.query.all()
     return render_template('admin/products.html', products=products)
+
+
+@login_manager.user_loader
+def get_user(id):
+    return User.query.get(int(id))
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -61,7 +67,8 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             session['email'] = form.email.data
-            flash('Welcom {} You are now logged in',
+            login_user(user)
+            flash('Welcome {} You are now logged in',
                   'success'.format(form.email.data))
             if (session['email'] == 'admin@admin.com'):
                 return redirect(url_for('admin'))
@@ -73,3 +80,10 @@ def login():
     # print(user)
     # return 'login form'
     return render_template('admin/login.html', form=form, title='Login')
+
+
+@login_required
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))

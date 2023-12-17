@@ -1,7 +1,7 @@
 from storeOverflow import app, db
+from flask_login import UserMixin
 
-
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     firstname = db.Column(db.String(20), unique=False, nullable=False)

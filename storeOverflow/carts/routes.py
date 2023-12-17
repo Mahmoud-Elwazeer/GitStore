@@ -1,6 +1,8 @@
 from flask import render_template, url_for, request, flash, redirect, current_app, session
 from storeOverflow import app, db, photos
 from storeOverflow.products.modules import Product
+from flask_login import current_user
+
 
 
 def mergeDict(dict_1, dict_2):
@@ -13,6 +15,8 @@ def mergeDict(dict_1, dict_2):
 
 @app.route('/addtocart', methods=['POST'])
 def addtocart():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
     try:
         product_id = request.form.get("product_id")
         color = request.form.get("colors")

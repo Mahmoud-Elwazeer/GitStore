@@ -8,7 +8,7 @@ class Category(db.Model):
 
 class Product(db.Model):
 
-    __searchable__ = ['name', 'description']
+    # __searchable__ = ['name', 'description']
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=False)

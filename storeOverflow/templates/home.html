@@ -56,31 +56,45 @@
         <!-- /LOGO -->
 
         <!-- SEARCH BAR -->
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<div class="header-search">
 								<form action="url_for('result')" method="POST">
 									<input name="q" class="input" placeholder="Search here">
 									<button type="submit" class="search-btn">Search</button>
 								</form>
 							</div>
-						</div>
+						</div> -->
 						<!-- /SEARCH BAR -->
 
         <!-- ACCOUNT -->
-        <div class="col-md-3 clearfix">
+        <div class="col-md-4 clearfix">
           <div class="header-ctn">
             <!-- /Wishlist -->
+          <!-- Cart -->
+          <div class="siz-container dropdown">
+            <a href="{{ url_for('getcart') }}">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Your Cart</span>
+              <div class="qty">{{ session['ShooppingCart']|length }}</div>
+            </a>
+          </div>
+          <!-- /Cart -->
 
-            <!-- Cart -->
-            <div class="dropdown">
-              <a href="{{ url_for('getcart') }}">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Your Cart</span>
-                <div class="qty">{{ session['ShooppingCart']|length }}</div>
-              </a>
+            {% if current_user.is_authenticated %}
+
+            <!-- <div class="siz-container ml-30"> -->
+              <div class="siz">
+                  <a href="{{ url_for('logout') }}">
+                      <i class="fa fa-sign-out"></i>
+                      <span>Logout</span>
+                  </a>
+              </div>
+              <div class="siz">
+                  <i class="fa fa-user"></i>
+                  <span>{{ current_user.username }}</span>
             </div>
-            <!-- /Cart -->
-
+            <!-- </div> -->
+            {% else %}
             <div class="siz-container">
               <div class="siz">
                   <a href="{{ url_for('register') }}">
@@ -96,6 +110,7 @@
                   </a>
               </div>
           </div>
+            {% endif %}
 
             <!-- Menu Toogle -->
             <div class="menu-toggle">
