@@ -41,12 +41,12 @@ def payment():
 
 @app.route('/thanks')
 def thanks():
-    return '<h1>Thanks</h1>'
+    return render_template('utils/thanks.html')
 
 
 @app.route('/payment_fail')
 def payment_fail():
-    return '<h1>Failed</h1>'
+    return render_template('utils/pay_failed.html')
 
 
 @app.route('/orders')
