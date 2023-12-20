@@ -52,9 +52,9 @@ def register():
                     password=hashed_pwd)
         db.session.add(user)
         db.session.commit()
-        flash('welcom {} Thanks for registering',
+        flash(f'welcom {current_user.username} Thanks for registering',
               'success'.format(form.username.data))
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
     return render_template('admin/register.html', form=form, title='Regestration')
 
 
@@ -68,7 +68,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             session['email'] = form.email.data
             login_user(user)
-            flash('Welcome {} You are now logged in',
+            flash(f'Welcome {current_user.username} You are now logged in',
                   'success'.format(form.email.data))
             if (session['email'] == 'admin@admin.com'):
                 return redirect(url_for('admin'))
@@ -77,8 +77,6 @@ def login():
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
             return redirect(url_for('login'))
-    # print(user)
-    # return 'login form'
     return render_template('admin/login.html', form=form, title='Login')
 
 

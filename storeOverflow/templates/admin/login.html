@@ -1,51 +1,103 @@
-<style>
-    body {
-        background: linear-gradient(#ffffff);
-        background-size: cover;
-        margin: 0;
-        height: 100vh;
-        font-family: Arial, sans-serif;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V16</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../../static/img/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/style/util.css">
+	<link rel="stylesheet" type="text/css" href="../../static/style/main.css">
 
-    .login-form {
-        font-size: 15px;
-        width: 400px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.3); /* Use rgba for transparency */
-        border-radius: 10px;
-        backdrop-filter: blur(8px); /* Apply blur effect to the background */
-    }
-</style>
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('../../static/img/bg-01.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Login
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" method="POST">
 
-{% extends "layout.html" %}
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<!-- <input class="input100" type="text" name="username" > -->
+						{% if form.email.errors %}
+						{{ form.email(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.email.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.email(class="input100", placeholder="Email") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
 
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<!-- <input class="input100" type="password" name="pass" placeholder="Password"> -->
+						{% if form.password.errors %}
+						{{ form.password(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.password.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.password(class="input100", placeholder="Password") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
 
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="text-center bg-info p-2 h4">Login</div>
-                {% from "_formhelpers.html" import render_field %}
-                {% include 'messages.html' %}
-                <form action="" method="POST">
-                    <section class="login-form">
-                        <div>
-                            {{ form.csrf_token }}
-                            {{ render_field(form.email, class="form-control", placeholder="Email") }} 
-                            {{ render_field(form.password, class="form-control", placeholder="Password") }}
-                        </div>
-                        <button
-                            type="submit"
-                            value="Register"
-                            class="btn btn-info mt-2 waves-effect waves-light teal"
-                        >
-                            Login
-                        </button>
-                    </section>
-                </form>
-    </div>
-    <div class="col-md-3"></div>
-    </div>
-</div>
-{% endblock content %}
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+					<p class="sign-up ml-2 mt-3 text-dark">Don't have an Account?<a href="{{ url_for('register') }}"> Sign Up</a></p>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/js/main-auth.js"></script>
+
+</body>
+</html>

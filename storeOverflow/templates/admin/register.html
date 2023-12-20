@@ -1,39 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V16</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../../static/img/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../../static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/style/util.css">
+	<link rel="stylesheet" type="text/css" href="../../static/style/main.css">
+
+<!--===============================================================================================-->
+
 <style>
-    .reg {
-        font-size: 15px;
-        width: 400px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
-        backdrop-filter: blur(8px);
-        margin-top: 100px;
+    .wrap-input100{
+        padding: 25px 0;
     }
 </style>
 
-{% extends "layout.html" %} 
+</head>
+<body>
+	<div class="limiter" style="overflow-y: hidden;">
+		<div class="container-login100" style="background-image: url('../../static/img/bg-01.jpg');">
+			<div class="wrap-login100 p-t-5 p-b-5">
+				<span class="login100-form-title p-b-10">
+					Register
+				</span>
+				<form class="login100-form validate-form p-b-10 p-t-5" method="POST">
 
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="text-center bg-info p-2 h4">Register User</div>
-                    {% from "_formhelpers.html" import render_field %} 
-                    {% include 'messages.html' %}
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        <section class="reg">
-                            {{ form.csrf_token }}
-                            {{ render_field(form.username, class="form-control", placeholder="Username") }} 
-                            {{ render_field(form.firstname, class="form-control", placeholder="First Name") }} 
-                            {{ render_field(form.lastname, class="form-control", placeholder="LastName") }}
-                            {{ render_field(form.email, class="form-control", placeholder="Email") }} 
-                            {{ render_field(form.password, class="form-control", placeholder="Password") }}
-                            {{ render_field(form.confirm_password, class="form-control", placeholder="Confirm Password") }}
-                            <p><input type="submit" value="Register" class="btn btn-info"></p>
-                        </section>
-                    </form>
-            <div class="col-md-3"></div>
-        </div>
-    </div>
-</div>
-{% endblock content %}
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						{% if form.username.errors %}
+						{{ form.username(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.username.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.username(class="input100", placeholder="User Name") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter firstname">
+						{% if form.firstname.errors %}
+						{{ form.firstname(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.firstname.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.firstname(class="input100", placeholder="First Name") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter lastname">
+						{% if form.lastname.errors %}
+						{{ form.lastname(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.lastname.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.lastname(class="input100", placeholder="Last Name") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter email">
+						{% if form.email.errors %}
+						{{ form.email(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.email.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.email(class="input100", placeholder="Email") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#x2709;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						{% if form.password.errors %}
+						{{ form.password(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.password.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.password(class="input100", placeholder="Password") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+                    
+                    <div class="wrap-input100 validate-input" data-validate="confirm the password">
+						{% if form.confirm_password.errors %}
+						{{ form.confirm_password(class="is-invalid input100") }}
+						<div class="invalid-feedback">
+						{% for error in form.confirm_password.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+						</div>
+						{% else %}
+						{{ form.confirm_password(class="input100", placeholder="Confirm Password") }}
+						{% endif %}
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn">
+							Register
+						</button>
+					</div>
+					<p class="sign-up ml-2 mt-3 text-dark">Alredy have an Account?<a href="{{ url_for('login') }}"> Login</a></p>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- <div id="dropDownSelect1"></div> -->
+	
+<!--===============================================================================================-->
+	<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../../static/js/main-auth.js"></script>
+
+</body>
+</html>
