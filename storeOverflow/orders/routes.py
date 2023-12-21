@@ -34,6 +34,7 @@ def payment():
     order.status = 'paid'
     db.session.commit()
     if order.status == 'paid':
+        session.pop('ShooppingCart')
         return redirect(url_for('thanks'))
     else:
         return redirect(url_for('payment_fail'))
@@ -59,7 +60,6 @@ def get_orders():
             order = Orders(user_id=user_id, bill=bill, orders=session['ShooppingCart'])
             db.session.add(order)
             db.session.commit()
-            session.pop('ShooppingCart')
             return redirect(url_for('orders', bill=bill))
         except:
             return redirect(url_for('getcart'))

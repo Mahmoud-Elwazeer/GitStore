@@ -27,5 +27,14 @@
 
 	<footer class="site-footer" id="footer">
 	</footer>
+	<script>
+		// Function to redirect after a specified time (in milliseconds)
+		function redirect() {
+			window.location.href = document.referrer;;
+		}
+	
+		// Set a timeout to call the redirect function after 30 seconds (30000 milliseconds)
+		setTimeout(redirect, 5000);
+	</script>
 </body>
 </html>
